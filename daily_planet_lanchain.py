@@ -22,7 +22,10 @@ from langchain_core.output_parsers import StrOutputParser
 
 
 # --- Configuration  ---
-SILICONFLOW_API_KEY = "API_KEY_HERE"  
+SILICONFLOW_API_KEY = os.getenv("SIL_API_KEY")
+if not SILICONFLOW_API_KEY:
+    print("[ERROR] Please set the SIL_API_KEY environment variable with your SiliconFlow API key.")
+    sys.exit(1)
 SILICONFLOW_BASE_URL = "https://api.siliconflow.cn/v1"
 MODEL_NAME = "Qwen/Qwen2.5-32B-Instruct"
 
